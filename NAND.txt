@@ -1,0 +1,8 @@
+.SUBCKT Nand A B out VCC GND
+*.PININFO A:I B:I out:O VCC:P GND:G
+*.EQN out=(!A + !B);
+MP1 out A VCC VCC PMOS
+MP2 out B VCC VCC PMOS
+MN3 pd_n1 A GND GND NMOS
+MN4 out B pd_n1 GND NMOS
+.ENDS Nand
