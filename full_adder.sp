@@ -68,32 +68,28 @@ MN_inv22 not_cin cin gnd gnd 		NMOS 	w='W_nmos' 	l='length'
 .ENDS saida_SC
 
 *capacitor
-C0 s0 0 1.5fF
-C1 c0 0 1.5fF
-C2 s1 0 1.5fF
-C3 c1 0 1.5fF
-C4 s2 0 1.5fF
-C5 c2 0 1.5fF
-C6 s3 0 1.5fF
-C7 c3 0 1.5fF
+*C0 s0 0 1.5fF
+*C2 s1 0 1.5fF
 
+*C3 c1 0 1.5fF
+*C5 c2 0 1.5fF
 
 * A = 0111 , B = 0100
 *Xnumero entrada(s) saida(s) vcc gnd nome da celula
-X1 in 0 s0 vdd gnd saida_MS 	**S0
-X2 in 0 c0 vdd gnd c_MS			**C0
+*entrada = a b g0(gnd) 
+X1 in 0 gnd s0 vdd gnd saida_SC	**saida = s1 do full adder
 
-X3 in 0 c0 s1 vdd gnd saida_SC	**saida = s1 do full adder
-X4 in 0 c0 c1 vdd gnd c_SC 		**c1 do full adder
+*entrada = a b c0(gnd) saida c1
+X2 in 0 gnd c1 vdd gnd c_SC 		**c1 do full adder
 
-X5 in in c1 s2 vdd gnd saida_SC	**saida = s2 do full adder
-X6 in in c1 c2 vdd gnd c_SC 		**c2 do full adder
+*entrada a b c1
+X3 in in c1 s1 vdd gnd saida_SC	**saida = s2 do full adder 2
 
-X7 0 0 c2 s3 vdd gnd saida_SC	**saida = s3 do full adder
-X8 0 0 c2 c3 vdd gnd c_SC 		**c3 do full adder
-
+*c2 = 
+X4 in in c1 c2 vdd gnd c_SC 		**c2 do full adder
 **---------------------------------------------------------------------------
 .tran 1ps 8n
+
 .measure tran pHL_s0 	trig v(in)  	val=0.5 		rise = 1 
 +               		  	targ v(s0) 	val=0.5     fall = 1		
 	 
@@ -106,27 +102,15 @@ X8 0 0 c2 c3 vdd gnd c_SC 		**c3 do full adder
 .measure tran pLH_s1 	trig v(in) 	 	val=0.5 		fall = 1 
 +                    	targ v(s1) 	val=0.5     rise = 1
 
-.measure tran pHL_s2 	trig v(in)  	val=0.5 		rise = 1 
-+               		  	targ v(s2) 	val=0.5     fall = 1		
-	 
-.measure tran pLH_s2 	trig v(in) 	 	val=0.5 		fall = 1 
-+                    	targ v(s2) 	val=0.5     rise = 1
-
-.measure tran pHL_s3 	trig v(in)  	val=0.5 		rise = 1 
-+               		  	targ v(s3) 	val=0.5     fall = 1		
-	 
-.measure tran pLH_s3 	trig v(in) 	 val=0.5 		fall = 1 
-+                    	targ v(s3) 	val=0.5     rise = 1
-
 
 .measure tran consumoCaso1_HL integ 'p(vdd)*(3-1.1)' from=1.1N to=3N
 .measure tran consumoCaso1_LH integ 'p(vdd)*(5-3.1)' from=3.1N to=5N
 *.measure tran consumoCaso1_HL integ 'p(vcc)*(fimIntervJan1-inicioIntervJan1)' from=3.1N to=5N
 
-.param length = '50n'
+.param length = '0.2u'
 
-.param w_pmos = '0.1u * 2'
-.param W_nmos = '0.1u'
+.param w_pmos = '0.8u * 2'
+.param W_nmos = '0.8u'
 
 *saidas e i=input
-.print v(s0)v(s1) v(s2) v(s3) v(c3)
+.print v(s0) v(s1) v(c2)
