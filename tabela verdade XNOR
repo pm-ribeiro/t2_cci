@@ -1,0 +1,15 @@
+tabela verdade XNOR
+
+000 :	1
+001 :	0
+010 :	0
+011 :	1
+100	: 0
+101	: 1
+110	: 1
+111	: 0
+
+
+Expressão
+inputs -> a, b, cin;
+onset -> (!a*!b*!cin)+(!a*b*cin)+(a*!b*cin)+(a*b*!cin);
