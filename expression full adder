@@ -1,5 +1,0 @@
-**cout = a*b + a*cin + b*cin
-s = cin XOR a XOR b
-
-expressão equivalente
-s = (!cin*!a*b)+(!cin*a*!b)+(cin*!a*!b)+(cin*a*b)
