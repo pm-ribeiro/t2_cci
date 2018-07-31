@@ -1,0 +1,34 @@
+Circuit: ********************************************************************************
+
+WARNING: Node 3 is floating.
+WARNING: Node 10 is floating.
+WARNING: Node 11 is floating.
+WARNING: Node 12 is floating.
+WARNING: Node 13 is floating.
+WARNING: Node 14 is floating.
+
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Direct Newton iteration for .op point succeeded.
+Heightened Def Con from 5.58915e-009 to 5.58964e-009
+
+Date: Tue Jul 31 00:27:51 2018
+Total elapsed time: 0.121 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 3611
+traniter = 3577
+tranpoints = 1317
+accept = 1234
+rejected = 84
+matrix size = 24
+fillins = 26
+solver = Normal
+Thread vector: 29.0/14.4[2] 4.1/2.8[2] 1.1/1.0[1] 0.4/1.1[1]  2592/500
+Matrix Compiler1: 5.02 KB object code size  1.2/1.0/[0.3]
+Matrix Compiler2: 3.77 KB object code size  0.6/0.9/[0.5]
+
